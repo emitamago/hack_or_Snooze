@@ -13,8 +13,7 @@ $(async function() {
   const $navSubmit = $("#nav-submit");
   const $navFav = $("#nav-favorite");
   const $navMyStories = $("#nav-my-stories");
-  const $favStar = $(".far fa-star");
-  const $unStar = $(".fas fa-star");
+  
 
 
   
@@ -132,10 +131,9 @@ $(async function() {
   /**
    * adding event lisner to stars 
    */
-  $allStoriesList.on('click', '.star', function() {
-   debugger;
-    $favStar.show();
-    $unStar.hide();
+  $allStoriesList.on('click', '.star', function(evt) {
+    
+    $(evt.target).toggleClass('far fas');
 
   });
 
@@ -215,14 +213,12 @@ $(async function() {
     // render story markup
     const storyMarkup = $(`
       <li id="${story.storyId}">
-        <a class="article-link" href="${story.url}" target="a_blank">
         <span class="star">
-          <i class="far fa-star"></i>
-          <i class="fas fa-star"></i>
+          <i class="far fa-star "></i>
         </span>
-          <strong>${story.title}</strong>
-          
-        </a>
+        <a class="article-link" href="${story.url}" target="a_blank">
+        <strong>${story.title}</strong>
+       </a>
         <small class="article-author">by ${story.author}</small>
         <small class="article-hostname ${hostName}">(${hostName})</small>
         <small class="article-username">posted by ${story.username}</small>
