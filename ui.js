@@ -106,7 +106,9 @@ $(async function() {
     let token = currentUser.loginToken
     const newStory = await storyList.addStory(currentUser,auther, title, url, token);
     const newHTML = generateStoryHTML(newStory);
-     $allStoriesList.append(newHTML)
+     $allStoriesList.prepend(newHTML.get(0))
+     $submitForm.trigger('reset');
+     
   })
 
   /**
