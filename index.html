@@ -18,12 +18,24 @@
     <span class="nav-link nav-right hidden" id="nav-welcome">
       <a href="#" id="nav-user-profile"></a>
     </span>
-    <a class="hidden" id="nav-logout" href="#">
+    <span id="navbar" class="hidden">
+    <a  id="nav-logout" href="#">
       <small>(logout)</small>
     </a>
+    <a   id="nav-submit" href="#">
+        <small>Submit</small>
+    </a>
+    <a  id="nav-favorite" href="#">
+        <small>Favorite</small>
+      </a>
+      <a  id="nav-my-stories" href="#">
+          <small>My Stories</small>
+      </a>
+    </span>
+
   </nav>
   <section class="articles-container container">
-    <form action=""  id="submit-form">
+    <form action="" class="hidden" id="submit-form">
       <div>
         <label for="author">author</label>
         <input id="author" required type="text" placeholder="author name">

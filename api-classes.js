@@ -48,18 +48,18 @@ class StoryList {
     /**
      * contact API and make request and save the reponse to variable
      */
-    // debugger;
     const response = await axios.post(`${BASE_URL}/stories`, {
       token:token, 
       story: {
-      author: auther,
-      title: title, 
-      url: url} 
+        author: auther,
+        title: title, 
+        url: url
+      } 
     })
-   
-
     /** 
-     * create new StoryList instant from the response
+     * create new Story instance from the response
+     * adds the story to the global variable to the story array
+     * addes story to current users own story list
      */
      const newStory = new Story(response.data.story)
      this.stories.unshift(newStory)

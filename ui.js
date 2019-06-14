@@ -7,12 +7,17 @@ $(async function() {
   const $loginForm = $("#login-form");
   const $createAccountForm = $("#create-account-form");
   const $ownStories = $("#my-articles");
+  const $navBar = $("#navbar");
   const $navLogin = $("#nav-login");
   const $navLogOut = $("#nav-logout");
- 
-  
-  
+  const $navSubmit = $("#nav-submit");
+  const $navFav = $("#nav-favorite");
+  const $navMyStories = $("#nav-my-stories");
 
+
+  
+  
+ 
   // global storyList variable
   let storyList = null;
 
@@ -96,20 +101,33 @@ $(async function() {
 
   /**
    * Event handler for new story submit form
+   * creates a new story
+   * adds the new story to the dom 
    */
   $submitForm.on('submit',async function(evt){
     
     evt.preventDefault(); //no refreshing page
+    
     let auther = $("#author").val();
     let title = $("#title").val();
     let url = $("#url").val();
+
     let token = currentUser.loginToken
-    const newStory = await storyList.addStory(currentUser,auther, title, url, token);
+
+    const newStory = await storyList.addStory(
+      currentUser,
+      auther, 
+      title, 
+      url, 
+      token);
     const newHTML = generateStoryHTML(newStory);
-     $allStoriesList.prepend(newHTML.get(0))
+    $allStoriesList.prepend(newHTML);
      $submitForm.trigger('reset');
      
   })
+
+
+
 
   /**
    * On page load, checks local storage to see if the user is already logged in.
@@ -209,8 +227,9 @@ $(async function() {
   }
 
   function showNavForLoggedInUser() {
+    
     $navLogin.hide();
-    $navLogOut.show();
+    $navBar.show();
   }
 
   /* simple function to pull the hostname from a URL */
