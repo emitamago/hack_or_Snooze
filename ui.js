@@ -67,6 +67,8 @@ $(async function() {
     loginAndSubmitForm();
   });
 
+
+
   /**
    * Log Out Functionality
    */
@@ -149,12 +151,14 @@ $(async function() {
       showNavForLoggedInUser();
     }
   }
+  
 
   /**
    * A rendering function to run to reset the forms and hide the login info
    */
 
   function loginAndSubmitForm() {
+    
     // hide the forms for logging in and signing up
     $loginForm.hide();
     $createAccountForm.hide();
@@ -162,9 +166,10 @@ $(async function() {
     // reset those forms
     $loginForm.trigger("reset");
     $createAccountForm.trigger("reset");
-
     // show the stories
     $allStoriesList.show();
+    
+   
 
     // update the navigation bar
     showNavForLoggedInUser();
@@ -226,10 +231,16 @@ $(async function() {
     elementsArr.forEach($elem => $elem.hide());
   }
 
+  /**
+   * show all nav bar when user is logged in. 
+   */
   function showNavForLoggedInUser() {
     
     $navLogin.hide();
     $navBar.show();
+    $navSubmit.on("click", function () {
+    $submitForm.toggle();
+    });
   }
 
   /* simple function to pull the hostname from a URL */
