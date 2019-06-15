@@ -132,8 +132,17 @@ $(async function() {
    * adding event lisner to stars 
    */
   $allStoriesList.on('click', '.star', function(evt) {
-    
     $(evt.target).toggleClass('far fas');
+    const currentStoryId = evt.target.closest('li').id;
+  // debugger;
+    if (evt.target.classList[1] === ('fas')) {
+      
+      User.favorites(
+        currentStoryId,
+        currentUser,
+        currentUser.loginToken
+        );
+    } 
 
   });
 
